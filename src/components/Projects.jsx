@@ -18,7 +18,9 @@ function Projects() {
       ],
       tech: ["React", "React Router", "Context API", "CSS Modules", "Vite"],
       role: "Frontend Developer",
-      status: "Завершен"
+      status: "Завершен",
+      demoLink: "https://princeabyss.github.io/TechStore/",
+      codeLink: "#" // Добавьте ссылку на исходный код, если есть
     },
     {
       title: "TaskFlow Pro",
@@ -33,7 +35,9 @@ function Projects() {
       ],
       tech: ["React", "DnD Kit", "Chart.js", "LocalStorage", "SCSS"],
       role: "Frontend Developer",
-      status: "В разработке"
+      status: "В разработке",
+      demoLink: "#",
+      codeLink: "#"
     },
     {
       title: "WeatherSphere",
@@ -48,9 +52,13 @@ function Projects() {
       ],
       tech: ["React", "Three.js", "Weather API", "PWA", "Service Workers"],
       role: "Full Stack Developer",
-      status: "В планах"
+      status: "В планах",
+      demoLink: "#",
+      codeLink: "#"
     }
   ];
+
+  const currentProject = projects[activeProject];
 
   return (
     <section className="projects" id="projects">
@@ -86,27 +94,27 @@ function Projects() {
 
               <div className="projectHeader">
                 <div>
-                  <h3 className="projectTitle">{projects[activeProject].title}</h3>
-                  <p className="projectSubtitle">{projects[activeProject].subtitle}</p>
+                  <h3 className="projectTitle">{currentProject.title}</h3>
+                  <p className="projectSubtitle">{currentProject.subtitle}</p>
                 </div>
 
                 <div className="projectMeta">
-                  <span className="projectRole">{projects[activeProject].role}</span>
-                  <span className={`projectStatus ${projects[activeProject].status.toLowerCase().replace(' ', '')}`}>
-                    {projects[activeProject].status}
+                  <span className="projectRole">{currentProject.role}</span>
+                  <span className={`projectStatus ${currentProject.status.toLowerCase().replace(' ', '')}`}>
+                    {currentProject.status}
                   </span>
                 </div>
               </div>
 
               <p className="projectDescription">
-                {projects[activeProject].description}
+                {currentProject.description}
               </p>
 
               <div className="projectDetails">
                 <div className="features">
                   <h4>Основные функции:</h4>
                   <ul>
-                    {projects[activeProject].features.map((feature, idx) => (
+                    {currentProject.features.map((feature, idx) => (
                       <li key={idx}>
                         <span className="featureIcon">✓</span>
                         {feature}
@@ -118,7 +126,7 @@ function Projects() {
                 <div className="techStack">
                   <h4>Технологии:</h4>
                   <div className="techTags">
-                    {projects[activeProject].tech.map((tech, idx) => (
+                    {currentProject.tech.map((tech, idx) => (
                       <span key={idx} className="techTag">{tech}</span>
                     ))}
                   </div>
@@ -126,20 +134,29 @@ function Projects() {
               </div>
 
               <div className="projectActions">
-                <button className="demoButton">
+                <a 
+                  href={currentProject.demoLink} 
+                  className="demoButton"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <span>Посмотреть демо</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2"/>
                   </svg>
-                </button>
+                </a>
 
-                <button className="codeButton">
+                <a 
+                  href={currentProject.codeLink} 
+                  className="codeButton"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <span>Исходный код</span>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                     <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2"/>
                   </svg>
-                </button>
-
+                </a>
               </div>
 
             </div>
