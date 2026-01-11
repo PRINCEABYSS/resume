@@ -1,44 +1,119 @@
+:root {
+  --primary: #4f46e5;
+  --secondary: #8b5cf6;
+  --bg-dark: rgba(15, 23, 42, 0.8);
+  --text-gray: #94a3b8;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .navbar {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1000px;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  transition: var(--transition);
   z-index: 1000;
 }
 
+/* Эффект при скролле вниз */
+.navbar.scrolled {
+  padding: 10px 0;
+  background: var(--bg-dark);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
 .nav-logo {
+  font-size: 1.5rem;
   font-weight: 800;
-  font-size: 1.2rem;
-  background: linear-gradient(45deg, #4f46e5, #8b5cf6);
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
+  cursor: pointer;
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  align-items: center;
+  gap: 35px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #94a3b8;
+  color: var(--text-gray);
   font-weight: 500;
-  transition: all 0.3s ease;
   font-size: 0.95rem;
+  transition: var(--transition);
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover, .nav-links a.active-link {
   color: #fff;
-  text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.nav-btn {
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+
+.nav-burger {
+  display: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* --- MEDIA QUERIES (Адаптивка) --- */
+
+@media (max-width: 850px) {
+  .nav-burger {
+    display: block; /* Показываем иконку меню */
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Скрываем за экраном справа */
+    width: 70%;
+    height: 100vh;
+    background: #0f172a;
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.5s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  }
+
+  .nav-links.active {
+    right: 0; /* Выезжает при открытии */
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    width: 100%; /* На очень маленьких экранах на весь экран */
+  }
 }
