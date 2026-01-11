@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
+import MainContent from './MainContent'
 
 function Header() {
   const [scrollY, setScrollY] = useState(0);
@@ -31,13 +32,7 @@ function Header() {
           <div className="titleGlow"></div>
           <p className="title">Начинающий Frontend-разработчик (Junior)</p>
           <p className="subtitle">React • JavaScript • Modern Web</p>
-        </div>
-
-        <div className="scrollIndicator">
-          <div className="mouse">
-            <div className="wheel"></div>
-          </div>
-          <span className="scrollText">Scroll</span>
+          <MainContent/> 
         </div>
       </div>
     </header>

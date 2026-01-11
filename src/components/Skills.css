@@ -1,57 +1,82 @@
-.skills {
-  margin-bottom: 50px;
+.skills-section {
+  padding: 100px 0;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
+.skills-header {
+  text-align: center;
+  margin-bottom: 80px;
 }
 
-.sectionTitle {
-  font-size: 2rem;
-  color: #2c3e50;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 10px;
-  margin-bottom: 30px;
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
-.skillsList {
+.skills-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.skill-category-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 40px;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-category-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-10px);
+  border-color: rgba(79, 70, 229, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.category-label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.category-desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.tags-container {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.skillItem {
-  width: 100%;
+.skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
 
-.skillInfo {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
+.skill-tag:hover {
+  background: rgba(79, 70, 229, 0.2);
+  color: #fff;
+  border-color: rgba(79, 70, 229, 0.5);
+  transform: scale(1.05);
 }
 
-.skillName {
-  font-weight: 600;
-  font-size: 1.1rem;
-}
-
-.skillPercent {
-  font-weight: 600;
-  color: #3498db;
-}
-
-.skillBar {
-  height: 10px;
-  background-color: #ecf0f1;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.skillProgress {
-  height: 100%;
-  background: linear-gradient(90deg, #3498db, #2ecc71);
-  border-radius: 5px;
-  transition: width 1s ease-in-out;
+@media (max-width: 768px) {
+  .skills-grid-modern {
+    grid-template-columns: 1fr;
+  }
 }

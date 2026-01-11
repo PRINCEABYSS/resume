@@ -1,32 +1,51 @@
 import React from 'react';
 import './Skills.css';
 
-function Skills() {
-  const skills = [
-    { name: 'HTML5', level: 85 },
-    { name: 'CSS3', level: 80 },
-    { name: 'JavaScript', level: 75 },
-    { name: 'React', level: 70 },
-    { name: 'Git', level: 70 },
-    { name: 'Responsive Design', level: 75 },
-  ];
+const skillGroups = [
+  {
+    category: "Core Frontend",
+    description: "Разработка сложной бизнес-логики и архитектуры приложений",
+    skills: ['React', 'JavaScript (ES6+)', 'TypeScript', 'Redux Toolkit', 'Next.js']
+  },
+  {
+    category: "Styling & UI",
+    description: "Работа с современными методологиями и библиотеками компонентов",
+    skills: ['CSS / SCSS', 'Tailwind CSS', 'Styled Components', 'Framer Motion', 'Material UI']
+  },
+  {
+    category: "Visualization",
+    description: "Создание интерактивных графиков и 3D-интерфейсов",
+    skills: ['Three.js', 'Canvas API', 'SVG Animation', 'WebGl']
+  },
+  {
+    category: "Workflow",
+    description: "Инструменты сборки, тестирования и контроля версий",
+    skills: ['Vite', 'Git / GitHub', 'REST API', 'Postman', 'Firebase']
+  }
+];
 
+function SkillsPage() {
   return (
-    <section className="skills">
+    <section className="skills-section">
       <div className="container">
-        <h2 className="sectionTitle">Навыки</h2>
-        <div className="skillsList">
-          {skills.map((skill, index) => (
-            <div key={index} className="skillItem">
-              <div className="skillInfo">
-                <span className="skillName">{skill.name}</span>
-                <span className="skillPercent">{skill.level}%</span>
-              </div>
-              <div className="skillBar">
-                <div
-                  className="skillProgress"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
+        <div className="skills-header">
+          <h2 className="section-title neonGlow">Frontend Expertise</h2>
+          <p className="skills-subtitle">
+            Мой технологический стек сфокусирован на создании быстрых, масштабируемых и отзывчивых веб-приложений.
+          </p>
+        </div>
+        
+        <div className="skills-grid-modern">
+          {skillGroups.map((group, i) => (
+            <div key={i} className="skill-category-card fade-in">
+              <div className="category-label">{group.category}</div>
+              <p className="category-desc">{group.description}</p>
+              <div className="tags-container">
+                {group.skills.map((skill, index) => (
+                  <span key={index} className="skill-tag">
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
@@ -36,4 +55,4 @@ function Skills() {
   );
 }
 
-export default Skills;
+export default SkillsPage;
